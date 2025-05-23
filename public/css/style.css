@@ -1,0 +1,250 @@
+body{
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #000000 !important;
+}
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-links , 
+.f-info-socials,
+.f-info-brand
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.f-info-socials i{
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+
+
+
+.f-info{
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+    cursor: pointer;
+}
+
+.footer {
+    border-top: 1px solid #444;
+    font-size: 0.95rem;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer a {
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #17a2b8; /* Bootstrap 'info' color */
+    text-decoration: none;
+}
+
+.f-info-social i {
+    cursor: pointer;
+}
+
+.f-info-social i:hover {
+    color: #0d6efd; /* Bootstrap 'primary' color */
+}
+
+
+.airbnb-card {
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.airbnb-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.airbnb-img-wrapper {
+  height: 250px;
+  overflow: hidden;
+}
+
+.airbnb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.3s ease;
+}
+
+.airbnb-card:hover .airbnb-img {
+  scale: 1.05;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card-body p {
+  font-size: 0.85rem;
+}
+
+
+
+.starability-slot label {
+  font-size: 1.5rem;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.starability-slot input:checked ~ label,
+.starability-slot input:checked + label {
+  color: #ff5a5f; /* Airbnb pink */
+}
+
+.card-body .card-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-outline-warning, .btn-outline-danger {
+  border-radius: 12px;
+}
+
+
+input.form-control, textarea.form-control {
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff5a5f;
+  box-shadow: 0 0 0 0.2rem rgba(255, 90, 95, 0.25);
+}
+
+button.btn-primary {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+}
+
+button.btn-primary:hover {
+  background-color: #e14c4f;
+  border-color: #e14c4f;
+}
+
+
+.alert pre {
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.alert {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.75rem 1.25rem;
+}
+
+
+
+
+
+
+ .airbnb-search-bar {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    padding: 0 0.5rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    align-items: center;
+  }
+
+  .location-input {
+    border: none;
+    border-radius: 30px;
+    box-shadow: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 0.9rem;
+  }
+
+  .location-input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .search-btn {
+    border: none;
+    background: #ff385c;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+  }
+
+  .search-btn i {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 767px) {
+    .airbnb-search-bar {
+      display: none !important;
+    }
+  }
+
+
+

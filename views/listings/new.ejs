@@ -1,0 +1,90 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4 fw-bold">Create a Listing</h2>
+
+          <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="mb-4">
+              <label for="title" class="form-label fw-semibold">Title</label>
+              <input
+                type="text"
+                name="listing[title]"
+                id="title"
+                class="form-control rounded-3"
+                placeholder="e.g. Cozy Mountain Cabin"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="description" class="form-label fw-semibold">Description</label>
+              <textarea
+                name="listing[description]"
+                id="description"
+                class="form-control rounded-3"
+                placeholder="Describe the space, amenities, and vibe"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label for="image" class="form-label fw-semibold">Upload Image</label>
+              <input
+                type="file"
+                name="listing[image]"
+                id="image"
+                class="form-control rounded-3"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="price" class="form-label fw-semibold">Price (₹)</label>
+              <input
+                type="number"
+                name="listing[price]"
+                id="price"
+                class="form-control rounded-3"
+                placeholder="e.g. 2500"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="location" class="form-label fw-semibold">Location</label>
+              <input
+                type="text"
+                name="listing[location]"
+                id="location"
+                class="form-control rounded-3"
+                placeholder="e.g. Manali, Shimla, Goa"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="country" class="form-label fw-semibold">Country</label>
+              <input
+                type="text"
+                name="listing[country]"
+                id="country"
+                class="form-control rounded-3"
+                placeholder="e.g. India"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 rounded-3 py-2 fw-semibold">
+              Create Listing
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

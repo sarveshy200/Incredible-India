@@ -1,0 +1,167 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-4">
+
+  <style>
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .filter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .filter:hover {
+      background-color: #f0f0f0;
+      border-color: #000;
+    }
+
+    .filter i {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .filter p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .row {
+      margin-top: 1.5rem;
+    }
+
+    .tax-free-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #222;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+
+  .switch-label {
+    margin-bottom: 0;
+  }
+  </style>
+
+  <div id="filters">
+    <!-- Example Airbnb-style filters -->
+    <div class="filter">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-house"></i></div>
+      <p>Entire Place</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-bed"></i></div>
+      <p>Private Room</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-water"></i></div>
+      <p>Lakefront</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-mountain-sun"></i></div>
+      <p>Mountain View</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-tree"></i></div>
+      <p>Cabin</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-swimmer"></i></div>
+      <p>Pool</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-wifi"></i></div>
+      <p>Wi-Fi</p>
+    </div>
+    <div class="tax-free-toggle ms-4 mt-2">
+      <label class="switch-label" for="taxFreeSwitch">Tax Free</label>
+      <label class="switch">
+        <input type="checkbox" id="taxFreeSwitch">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="row gy-4">
+    <% for (let listing of allListing) { %>
+      <div class="col-lg-4 col-md-6">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+          <div class="card airbnb-card border-0 shadow-sm">
+            <div class="airbnb-img-wrapper">
+              <img
+                src="<%= listing.image.url %>"
+                class="card-img-top airbnb-img"
+                alt="listing image"
+              />
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <h5 class="card-title mb-0 text-truncate"><%= listing.title %></h5>
+                <span class="text-success fw-bold">₹<%= listing.price %></span>
+              </div>
+              <p class="text-muted mb-0">India</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
