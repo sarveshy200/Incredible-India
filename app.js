@@ -96,6 +96,9 @@ app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
 });
 
+app.get('/', (req, res)=>{
+  res.redirect("/listings");
+});
 
 
 // Error Handling Middleware
