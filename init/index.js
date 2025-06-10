@@ -1,32 +1,36 @@
 const mongoose = require("mongoose");
-const Listing = require("../models/listing");
-const initData = require("../init/data");
+const Category = require("../models/category");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// Your MongoDB connection string
+const dbUrl = "mongodb://127.0.0.1:27017/wanderlust"; // replace with your DB name
 
-main().then(() => {
-    console.log("Connected to DB");
-    initDB();
-}).catch((err) => {
-    console.error("Connection error:", err);
-});
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch(err => {
+    console.error("MongoDB connection error:", err);
+  });
 
-async function main() {
-    await mongoose.connect(MONGO_URL);
-}
+const seedCategories = async () => {
+  const categories = [
+    "Trending",
+    "Entire Place",
+    "Private Room",
+    "Lakefront",
+    "Mountain View",
+    "Cabin",
+    "Pool",
+    "Wi-Fi"
+  ];
 
-const initDB = async () => {
-    try {
-        await Listing.deleteMany({});
-        const modifiedData = initData.map((obj) => ({
-            ...obj,
-            owner: "6828c57b3203d014f4c836bb"
-        }));
-        await Listing.insertMany(modifiedData);
-        console.log("Data was initialized");
-    } catch (err) {
-        console.error("Initialization error:", err);
-    } finally {
-        mongoose.connection.close();
-    }
+  await Category.deleteMany({}); // Clears existing data (optional)
+  await Category.insertMany(categories.map(name => ({ name })));
+  console.log("Category data seeded!");
+  mongoose.connection.close();
 };
+
+seedCategories();

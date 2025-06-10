@@ -87,6 +87,20 @@
             <div class="invalid-feedback">Please enter a country.</div>
           </div>
 
+
+           <div class="mb-3">
+            <label for="categorySelect" class="form-label fw-semibold">Select Categories</label>
+            <select name="listing[categories][]" id="categorySelect" multiple class="form-select rounded-3">
+              <% allCategories.forEach(cat => { %>
+                <option value="<%= cat._id %>" 
+                  <%= listing.categories.some(sel => sel._id.toString() === cat._id.toString()) ? "selected" : "" %>>
+                  <%= cat.name %>
+                </option>
+              <% }) %>
+            </select>
+          </div>
+
+
           <!-- Submit -->
           <button type="submit" class="btn btn-primary w-100 rounded-3 fw-semibold py-2">Update Listing</button>
         </form>
@@ -94,3 +108,12 @@
     </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const categorySelect = document.getElementById("categorySelect");
+    const choices = new Choices(categorySelect, {
+      removeItemButton: true,
+      placeholderValue: 'Choose categories'
+    });
+  });
+</script>

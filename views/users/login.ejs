@@ -1,5 +1,61 @@
 <% layout("/layouts/boilerplate") %>
 
+<style>
+  body {
+  background: linear-gradient(135deg, #56ccf2, #2f80ed);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border-radius: 20px;
+  border: none;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #2f80ed;
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 12px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #2f80ed;
+  box-shadow: 0 0 0 0.2rem rgba(47, 128, 237, 0.25);
+}
+
+.btn-primary {
+  background-color: #2f80ed;
+  border: none;
+  border-radius: 12px;
+}
+
+.btn-primary:hover {
+  background-color: #1c6ed2;
+}
+
+a.text-decoration-none {
+  color: #2f80ed;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a.text-decoration-none:hover {
+  color: #0c4c9a;
+  text-decoration: underline;
+}
+
+</style>
+
 <div class="container">
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-md-6 col-lg-5">

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review")
+const Category = require("./category");
 
 const listingSchema = new Schema({
   title: {
@@ -25,6 +26,13 @@ const listingSchema = new Schema({
     type : Schema.Types.ObjectId,
     ref: "User",
   },
+  categories: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Category"
+    }
+  ],
+  
 });
 
 

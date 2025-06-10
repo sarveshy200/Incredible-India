@@ -19,7 +19,9 @@ const listingRouter = require("./routes/listing");
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");  
 
+
 const dbUrl = process.env.ATLASDB_URL;
+const sessionSecret = process.env.SECRET || "thisisasecret";
 
 // Connect to MongoDB
 main()
