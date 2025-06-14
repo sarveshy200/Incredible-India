@@ -166,48 +166,24 @@
   </style>
   <div class="container mt-4 mb-4">
     <div id="filters">
-      <!-- Example Airbnb-style filters -->
-      <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-house"></i></div>
-        <p>Entire Place</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Private Room</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-water"></i></div>
-        <p>Lakefront</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-mountain-sun"></i></div>
-        <p>Mountain View</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-tree"></i></div>
-        <p>Cabin</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-swimmer"></i></div>
-        <p>Pool</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-wifi"></i></div>
-        <p>Wi-Fi</p>
-      </div>
-      <div class="tax-free-toggle ms-4 mt-2">
-        <label class="switch-label" for="taxFreeSwitch">Tax Free</label>
-        <label class="switch">
-          <input type="checkbox" id="taxFreeSwitch">
-          <span class="slider round"></span>
-        </label>
+      <div class="category-filters d-flex flex-wrap gap-3 align-items-center">
+        <a href="/listings"
+          class="filter text-center text-decoration-none text-dark <%= !activeCategory ? 'border border-dark bg-light rounded' : '' %>"
+          style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 10px;">
+          <div><i class="fa-solid fa-rotate-left"></i></div>
+          <p>Reset</p>
+        </a>
+        <% categories.forEach(category=> { %>
+          <a href="/listings/category/<%= category._id %>"
+            class="filter text-center text-decoration-none text-dark <%= activeCategory == category._id.toString() ? 'border border-dark bg-light rounded' : '' %>">
+            <div><i class="fa-solid <%= category.icon %>"></i></div>
+            <p>
+              <%= category.name %>
+            </p>
+          </a>
+          <% }) %>
       </div>
     </div>
-
     <% if (allListing && allListing.length> 0) { %>
       <div class="row gy-4">
         <% allListing.forEach(listing=> { %>

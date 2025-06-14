@@ -1,7 +1,7 @@
 const express = require("express"); 
 const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync");
-const { isLoggedIn, isOwner, validateListing } = require("../middleware");
+const { isLoggedIn, isOwner, validateListing , validateBooking} = require("../middleware");
 const listingController = require("../controllers/listings");
 const multer  = require('multer')
 const {storage} = require("../cloudConfig"); 
@@ -16,6 +16,11 @@ router.route("/")
   wrapAsync(listingController.createListing)
 );
 
+router.get("/search", wrapAsync(listingController.searchListing));
+
+router.get("/category/:categoryId", wrapAsync(listingController.listByCategory));
+
+router.post("/:id/bookings", validateBooking, wrapAsync(listingController.createBooking));
 
 // New Listing Form
 router.get("/new", isLoggedIn, listingController.renderNewForm);

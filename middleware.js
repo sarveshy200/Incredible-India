@@ -1,6 +1,6 @@
 const Listing = require("./models/listing");
 const Review = require("./models/review");
-const { listingSchema , reviewSchema} = require("./schema");
+const { listingSchema , reviewSchema, bookNowSchema } = require("./schema");
 const ExpressError = require("./utils/ExpressError");
 
 
@@ -65,4 +65,15 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     return res.redirect(`/listings/${id}`);
   }
   next(); // ← Don't forget to call next() to continue the middleware chain
+};
+
+
+module.exports.validateBooking = (req, res, next) => {
+  const { error } = bookNowSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    const msg = error.details.map(el => el.message).join(', ');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
 };

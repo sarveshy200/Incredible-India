@@ -10,7 +10,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
-const flash = require("connect-flash");
+const flash = require("connect-flash"); 
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
@@ -20,7 +20,7 @@ const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");  
 
 
-const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = "mongodb://localhost:27017/wanderlust";
 const sessionSecret = process.env.SECRET || "thisisasecret";
 
 // Connect to MongoDB

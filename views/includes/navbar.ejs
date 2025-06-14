@@ -86,10 +86,12 @@
       </div>
 
       <!-- Search -->
-      <form class="d-none d-md-flex mx-auto airbnb-search-bar bg-white">
-        <input type="text" class="form-control location-input" placeholder="Search destinations..." name="location">
+      <form action="/listings/search" method="GET" class="d-none d-md-flex mx-auto airbnb-search-bar bg-white">
+        <input type="text" class="form-control location-input" placeholder="Search destinations..." name="title">
         <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
+
+
 
       <!-- Right Navigation -->
       <div class="navbar-nav ms-auto">

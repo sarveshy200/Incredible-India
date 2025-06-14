@@ -1,11 +1,41 @@
 const Category = require("../models/category");
 const Listing = require("../models/listing");
+const BookNow = require("../models/bookNow");
 
 // Show all listings
 module.exports.index = async (req, res) => {
   const allListing = await Listing.find({});
-  res.render("listings/index.ejs", { allListing });
+  const categories = await Category.find({});
+  res.render("listings/index.ejs", { allListing , categories, activeCategory: null});
 };
+
+module.exports.searchListing = async (req, res) => {
+  const { title } = req.query;
+  const categories = await Category.find({});
+  let allListing;
+
+  if (title) {
+    allListing = await Listing.find({
+      title: { $regex: title, $options: "i" }
+    });
+  } else {
+    allListing = await Listing.find({});
+  }
+
+  res.render("listings/index.ejs", { allListing, categories });
+};
+
+module.exports.listByCategory = async (req, res) => {
+  const { categoryId } = req.params;
+  const allListing = await Listing.find({ categories: categoryId });
+  const categories = await Category.find({});
+  res.render("listings/index.ejs", {
+    allListing,
+    categories,
+    activeCategory: categoryId 
+  });
+};
+
 
 // Show new listing form
 module.exports.renderNewForm = async (req, res) => {
@@ -98,5 +128,53 @@ module.exports.deleteListing = async (req, res) => {
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
 };
+
+module.exports.createBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+
+    if (!listing) {
+      req.flash("error", "Listing not found.");
+      return res.redirect("/listings");
+    }
+
+    const {
+      name,
+      email,
+      phone,
+      address,
+      members,
+      date,
+      memberNames
+    } = req.body.booking;
+    const formattedNames = typeof memberNames === "string"
+      ? memberNames.split(",").map(name => name.trim())
+      : Array.isArray(memberNames)
+        ? memberNames.map(name => name.trim())
+        : [];
+
+    const newBooking = new BookNow({
+      listing: listing._id,
+      name,
+      email,
+      phone,
+      address,
+      members,
+      memberNames: formattedNames,
+      date
+    });
+
+    await newBooking.save();
+    req.flash("success", "Booking created successfully!");
+    res.redirect(`/listings/${id}`);
+  } catch (err) {
+    console.error("Booking creation error:", err);
+    req.flash("error", "There was a problem creating your booking.");
+    res.redirect("/listings");
+  }
+};
+
+
 
 
