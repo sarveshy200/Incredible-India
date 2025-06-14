@@ -168,7 +168,7 @@
     <div id="filters">
       <div class="category-filters d-flex flex-wrap gap-3 align-items-center">
         <a href="/listings"
-          class="filter text-center text-decoration-none text-dark <%= !activeCategory ? 'border border-dark bg-light rounded' : '' %>"
+          class="filter text-center text-decoration-none text-dark <%= typeof activeCategory !== 'undefined' && !activeCategory ? 'border border-dark bg-light rounded' : '' %>"
           style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 10px;">
           <div><i class="fa-solid fa-rotate-left"></i></div>
           <p>Reset</p>

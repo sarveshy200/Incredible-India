@@ -6,8 +6,13 @@ const BookNow = require("../models/bookNow");
 module.exports.index = async (req, res) => {
   const allListing = await Listing.find({});
   const categories = await Category.find({});
-  res.render("listings/index.ejs", { allListing , categories, activeCategory: null});
+  res.render("listings/index.ejs", {
+    allListing,
+    categories,
+    activeCategory: null   // ✅ Add this line
+  });
 };
+
 
 module.exports.searchListing = async (req, res) => {
   const { title } = req.query;
