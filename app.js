@@ -20,7 +20,7 @@ const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");  
 
 
-const dbUrl = "mongodb://localhost:27017/wanderlust";
+const dbUrl = process.env.ATLASDB_URL;
 const sessionSecret = process.env.SECRET || "thisisasecret";
 
 // Connect to MongoDB
