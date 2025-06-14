@@ -27,7 +27,7 @@ module.exports.searchListing = async (req, res) => {
     allListing = await Listing.find({});
   }
 
-  res.render("listings/index.ejs", { allListing, categories });
+  res.render("listings/index.ejs", { allListing, categories , activeCategory: null });
 };
 
 module.exports.listByCategory = async (req, res) => {
