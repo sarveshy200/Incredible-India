@@ -20,7 +20,7 @@ router.get("/search", wrapAsync(listingController.searchListing));
 
 router.get("/category/:categoryId", wrapAsync(listingController.listByCategory));
 
-router.post("/:id/bookings", isLoggedIn, validateBooking, wrapAsync(listingController.createBooking));
+router.post("/:id/bookings", isLoggedIn,validateBooking, wrapAsync(listingController.createBooking));
 
 // New Listing Form
 router.get("/new", isLoggedIn, listingController.renderNewForm);

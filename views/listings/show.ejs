@@ -124,9 +124,15 @@
                         </form>
                     </div>
                     <% } %>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Book Now
-                    </button>
+                    <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Book Now
+                        </button>
+                    <% } else { %>
+                        <a href="/signup">
+                            Book Now
+                        </a>
+                    <% } %>
                 </div>
             </div>
         </div>
